@@ -17,7 +17,7 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
-from catalog.views import ManagerListView, EnterpriseListView, VehicleListView
+from catalog.views import ManagerListView, EnterpriseListView, VehicleListView, my_view
 from rest_framework.authtoken.views import obtain_auth_token
 
 #import debug_toolbar
@@ -29,6 +29,7 @@ urlpatterns = [
     path('enterprises/', EnterpriseListView.as_view(), name='enterprise-list'),
     path('vehicles/', VehicleListView.as_view(), name='vehicle-list'),
     path('token/', obtain_auth_token),
+    path('my-view/', my_view, name='my-view'),
 ]
 
 

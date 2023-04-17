@@ -5,6 +5,8 @@ from .serializers import ManagerSerializer, EnterpriseSerializer, VehiclesSerial
 from rest_framework.generics import ListAPIView
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.authentication import TokenAuthentication
+from django.shortcuts import render
+from django.views.decorators.csrf import csrf_protect
 
 '''
 Этот класс позволяет отображать данные по всем менеджерам, без авторизации пользователя
@@ -46,3 +48,11 @@ class VehicleListView(APIView):
         vehicles = Vehicles.objects.filter(enterprise__manager_enterprise=request.user)
         serializer = VehiclesSerializer(vehicles, many=True)
         return Response(serializer.data)
+    
+@csrf_protect
+def my_view(request):
+    context = {
+        'heading': 'Hello, world!',
+        'content': 'This is Django view.',
+    }
+    return render(request, 'test.html', context)

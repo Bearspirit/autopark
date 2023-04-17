@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My Template</title>
+</head>
+<body>
+    <h1>{{ heading }}</h1>
+    <p>{{ content }}</p>
+</body>
+</html>
+<form method="post">
+    {% csrf_token %}
+    <!-- остальные поля формы -->
+    <input type="submit" value="Отправить">
+  </form>
